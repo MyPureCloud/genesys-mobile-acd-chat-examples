@@ -11,4 +11,4 @@
 /build
 /captures
 .externalNativeBuild
-app/genesys.properties
+android/genesyswidgetsacdchat/genesys.properties

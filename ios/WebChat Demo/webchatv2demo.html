@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PureCloud WebChat Demo</title>
+
+  <script type="text/javascript">
+    window._genesys = {
+      widgets: {
+        main: {
+          theme: 'dark', //'light',
+          lang: 'en',  
+          mobileMode: true, // 'auto',
+          mobileModeBreakpoint: 600
+        },
+        webchat: {
+          transport: {
+            type: 'purecloud-v2-sockets',
+            dataURL: 'https://api.inindca.com',
+            deploymentKey : 'INSERT DEPLOYMENT KEY HERE',
+            orgGuid : 'INSERT ORG GUID HERE',
+            interactionData: {
+              routing: {
+                targetType: 'QUEUE',
+                targetAddress: 'INSERT QUEUE NAME HERE',
+                priority: 2
+              }
+            }
+          },
+          userData: {
+            addressStreet: '64472 Brown Street',
+            addressCity: 'Lindgrenmouth',
+            addressPostalCode: '50163-2735',
+            addressState: 'FL',
+            phoneNumber: '1-916-892-2045 x293',
+            phoneType: 'Cell',
+            customerId: '59606',
+            // These fields should be provided via advanced configuration
+            // firstName: 'Praenomen',
+            // lastName: 'Gens',
+            // email: 'praenomen.gens@calidumlitterae.com',
+            // subject: 'Chat subject'
+          }
+        }
+      }
+    };
+  </script>
+
+  <script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.com/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>
+
+  <script type="text/javascript">
+      const customPlugin = CXBus.registerPlugin('Custom');
+		function getAdvancedConfig() {
+			return {
+				form: {
+					autoSubmit: false,
+					firstname: 'Han',
+					lastname: 'Solo',
+					email: 'han.solo@mfalcon.com',
+					subject: 'Bounty hunters!'
+				},
+				formJSON: {
+					wrapper: '<table></table>',
+					inputs: [
+						// Default fields
+						{
+							id: 'cx_webchat_form_firstname',
+							name: 'firstname',
+							maxlength: '100',
+							placeholder: 'Required',
+							label: 'First Name'
+						},
+						{
+							id: 'cx_webchat_form_lastname',
+							name: 'lastname',
+							maxlength: '100',
+							placeholder: 'Required',
+							label: 'Last Name'
+						},
+						{
+							id: 'cx_webchat_form_email',
+							name: 'email', 
+							maxlength: '100',
+							placeholder: 'Optional',
+							label: 'Email'
+						},
+						{
+							id: 'cx_webchat_form_subject', 
+							name: 'subject', 
+							maxlength: '100',
+							placeholder: 'Optional',
+							label: 'Subject'
+						},
+						// Custom Fields
+						{
+							id: 'custom_field_1', 
+							name: 'customField1', 
+							maxlength: '100',
+							placeholder: 'Custom Data',
+							label: 'Custom Field 1',
+							value: 'My Custom Value'
+						}
+					]
+				}
+			};
+		}
+
+  customPlugin.subscribe('WebChatService.started', function (e) {
+    console.log('Chat started', e);
+    window.webkit.messageHandlers.webchat.postMessage(e);
+  });
+
+  customPlugin.subscribe('WebChatService.ended', function (e) {
+    console.log('Chat ended', e);
+    window.webkit.messageHandlers.webchat.postMessage(e);
+  });
+  
+  customPlugin.subscribe('WebChat.minimized', function (e) {
+    console.log('WebChat minimized', e);
+    window.webkit.messageHandlers.webchat.postMessage(e);
+  });
+  
+  customPlugin.subscribe('WebChat.unminimized', function (e) {
+    console.log('WebChat unminimized', e);
+    window.webkit.messageHandlers.webchat.postMessage(e);
+  });
+  
+  customPlugin.subscribe('WebChat.closed', function (e) {
+    console.log('WebChat closed', e);
+    window.webkit.messageHandlers.webchat.postMessage(e);
+  });
+
+  function open() {
+    customPlugin.command('WebChat.open', getAdvancedConfig());
+  }
+
+  window.onload = open;
+	</script>
+
+</head>
+<body>
+</body>
+</html>
