@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PureCloud WebChat Demo</title>
+
+        <script type="text/javascript">
+            window._genesys = {
+              widgets: {
+                main: {
+                  theme: 'dark', //'light',
+                  lang: 'en',
+                  mobileMode: true, // 'auto',
+                  mobileModeBreakpoint: 600
+                },
+                webchat: {
+                  transport: {
+                    type: 'purecloud-v2-sockets',
+                    dataURL: AcdChatHostInterface.getDataUrl(),
+                    deploymentKey : AcdChatHostInterface.getDeploymentKey(),
+                    orgGuid : AcdChatHostInterface.getOrgGuid(),
+                    interactionData: {
+                      routing: {
+                        targetType: 'QUEUE',
+                        targetAddress: AcdChatHostInterface.getQueueName(),
+                        priority: AcdChatHostInterface.getPriority()
+                      }
+                    }
+                  },
+                  userData: {
+                    addressStreet: '64472 Brown Street',
+                    addressCity: 'Lindgrenmouth',
+                    addressPostalCode: '50163-2735',
+                    addressState: 'FL',
+                    phoneNumber: '1-916-892-2045 x293',
+                    phoneType: 'Cell',
+                    customerId: '59606',
+                  }
+                }
+              }
+            };
+        </script>
+
+        <script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.com/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>
+
+        <script>
+            const customPlugin = CXBus.registerPlugin('Custom');
+            function getAdvancedConfig() {
+                    return {
+                        form: {
+                            autoSubmit: true,
+                            firstname: AcdChatHostInterface.getChatUserFirstName(),
+                            lastname: AcdChatHostInterface.getChatUserLastName(),
+                            email: AcdChatHostInterface.getChatUserEmailAddress(),
+                        }
+                    };
+                }
+
+            customPlugin.subscribe('WebChatService.started', function (e) {
+              console.log('Chat started', e);
+            });
+
+            customPlugin.subscribe('WebChatService.ended', function (e) {
+              console.log('Chat ended', e);
+              AcdChatHostInterface.closeChatWindow();
+            });
+
+            function open() {
+                customPlugin.command('WebChat.open', getAdvancedConfig());
+            }
+            window.onload = open;
+
+        </script>
+
+        <style>
+            .cx-form-horizontal {
+                display: none;
+            }
+
+            .cx-button-minimize {
+                display: none !important;
+            }
+        </style>
+
+    </head>
+
+    <body>
+    </body>
+</html>
