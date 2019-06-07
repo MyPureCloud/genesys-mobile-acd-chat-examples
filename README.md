@@ -12,7 +12,7 @@ The following sections describe how to use the examples given.
 
 ### iOS example
 
-[![iOS Example In Action](media/ios-screenshot.png)](media/ios-demo-video.mov)
+[<img align="right" src="media/ios-screenshot.png"/>](media/ios-demo-video.mov)
 (click to see demo video)
 
 The iOS example is a simple proof-of-concept at this point that can be extracted and used with some changes by customers. The example can be run as-is with a few simple modifications in the `webchatv2demo.html` file.
