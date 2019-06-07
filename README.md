@@ -1,6 +1,6 @@
 # Genesys Mobile ACD Chat examples
 
-This repo contains Android and iOS examples for embedding the Genesys Widgets ACD chat into native applications. Right now this is the best way for Genesys customers to integrate PureCloud ACD chat into their native applications to allow their customers to initiate chats with agents.
+This repo contains Android and iOS examples for embedding the Genesys Widgets ACD chat into native applications. Right now this is the best way for Genesys customers to integrate PureCloud ACD chat into their native applications to allow their customers to initiate chats with agents. Demonstation videos can be found and downloaded from the `media` folder. 
 
 ## Prerequisites
 
@@ -12,9 +12,9 @@ The following sections describe how to use the examples given.
 
 ### iOS example
 
-[<img align="right" src="media/ios-screenshot.png"/>](media/ios-demo-video.mp4)
+<img align="right" src="media/ios-screenshot.png"/>
 
-Click the image to the right to see a brief demonstration video. The iOS example is a simple proof-of-concept at this point that can be extracted and used with some changes by customers. The example can be run as-is with a few simple modifications in the `webchatv2demo.html` file.
+The iOS example is a simple proof-of-concept at this point that can be extracted and used with some changes by customers. The example can be run as-is with a few simple modifications in the `webchatv2demo.html` file.
 
 * Modify the `deploymentKey` field in the javascript to be the deployment key as configured in your PureCloud org in the admin section under "Contact Center => Widgets".
 * Modify the `orgGuid` field in the javascript to be the org id of the organization, found in the PureCloud admin section under "Account Settings => Organization Settings => Advanced".
@@ -24,9 +24,9 @@ The app should then allow a chat interaction to be initiated to the specified qu
 
 ### Android example
 
-[<img align="right" src="media/android-screenshot.png"/>](media/android-demo-video.mp4)
+<img align="right" src="media/android-screenshot.png"/>
 
-Click the image to the right to see a brief demonstration video. The Android example application provides a library project can be extracted and built into an existing customer's native app as-is (with a configuration file) under the `genesyswidgetsacdchat` folder. 
+The Android example application provides a library project can be extracted and built into an existing customer's native app as-is (with a configuration file) under the `genesyswidgetsacdchat` folder. 
 
 * Copy the library project into the existing project by copying the entirety of `genesyswidgetsacdchat` into the existing project's root directory.
 * Add the library project into the `settings.gradle` of the base project (e.g. `include ':existing-app', ':genesyswidgetsacdchat'`)
