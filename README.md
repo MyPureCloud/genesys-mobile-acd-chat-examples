@@ -1,6 +1,6 @@
 # Genesys Mobile ACD Chat examples
 
-This repo contains Android and iOS examples for embedding the Genesys Widgets ACD chat into native applications. Right now this is the best way for Genesys customers to integrate PureCloud ACD chat into their native applications to allow their customers to initiate chats with agents.
+This repo contains Android and iOS examples for embedding the Genesys Widgets ACD chat into native applications. Right now this is the best way for Genesys customers to integrate PureCloud ACD chat into their native applications to allow their customers to initiate chats with agents. Demonstation videos can be found and downloaded from the `media` folder. 
 
 ## Prerequisites
 
@@ -12,6 +12,8 @@ The following sections describe how to use the examples given.
 
 ### iOS example
 
+<img align="right" src="media/ios-screenshot.png"/>
+
 The iOS example is a simple proof-of-concept at this point that can be extracted and used with some changes by customers. The example can be run as-is with a few simple modifications in the `webchatv2demo.html` file.
 
 * Modify the `deploymentKey` field in the javascript to be the deployment key as configured in your PureCloud org in the admin section under "Contact Center => Widgets".
@@ -21,6 +23,8 @@ The iOS example is a simple proof-of-concept at this point that can be extracted
 The app should then allow a chat interaction to be initiated to the specified queue.
 
 ### Android example
+
+<img align="right" src="media/android-screenshot.png"/>
 
 The Android example application provides a library project can be extracted and built into an existing customer's native app as-is (with a configuration file) under the `genesyswidgetsacdchat` folder. 
 
