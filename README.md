@@ -12,6 +12,9 @@ The following sections describe how to use the examples given.
 
 ### iOS example
 
+[![iOS Example In Action](media/ios-screenshot.png)](media/ios-demo-video.mov)
+(click to see demo video)
+
 The iOS example is a simple proof-of-concept at this point that can be extracted and used with some changes by customers. The example can be run as-is with a few simple modifications in the `webchatv2demo.html` file.
 
 * Modify the `deploymentKey` field in the javascript to be the deployment key as configured in your PureCloud org in the admin section under "Contact Center => Widgets".
@@ -21,6 +24,9 @@ The iOS example is a simple proof-of-concept at this point that can be extracted
 The app should then allow a chat interaction to be initiated to the specified queue.
 
 ### Android example
+
+[![Android Example In Action](media/android-screenshot.png)](media/android-demo-video.mov)
+(click to see demo video)
 
 The Android example application provides a library project can be extracted and built into an existing customer's native app as-is (with a configuration file) under the `genesyswidgetsacdchat` folder. 
 
